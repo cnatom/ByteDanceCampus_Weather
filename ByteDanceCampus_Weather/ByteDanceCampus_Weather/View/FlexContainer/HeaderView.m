@@ -6,18 +6,15 @@
 //
 //
 
-#import "FlexItemHeaderView.h"
+#import "HeaderView.h"
 
-@interface FlexItemHeaderView ()
+@interface HeaderView ()
 @property(nonatomic, strong) UIStackView *rows;
-@property(nonatomic, strong) UILabel *weekView;
-@property(nonatomic, strong) UIImageView *iconView;
-@property(nonatomic, strong) UILabel *minView;
-@property(nonatomic, strong) UIView *line;
-@property(nonatomic, strong) UILabel *maxView;
+
+@property(nonatomic, strong) UIView *lineView;
 @end
 
-@implementation FlexItemHeaderView
+@implementation HeaderView
 
 - (instancetype)init {
     self = [super init];
@@ -35,11 +32,13 @@
     [self.rows addArrangedSubview:self.weekView];
     [self.rows addArrangedSubview:self.iconView];
     [self.rows addArrangedSubview:self.minView];
+    [self.rows addArrangedSubview:self.lineView];
     [self.rows addArrangedSubview:self.maxView];
     [self.rows mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self);
     }];
 }
+
 
 - (UILabel *)weekView {
     if (_weekView == NULL) {
@@ -62,7 +61,7 @@
 
 - (UIImageView *)iconView {
     if (_iconView == NULL) {
-        _iconView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+        _iconView = [[UIImageView alloc] init];
         _iconView.image = [UIImage imageNamed:@"sun.max.fill"];
         _iconView.contentMode = UIViewContentModeScaleAspectFit;
     }
@@ -77,6 +76,15 @@
         _minView.textColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
     }
     return _minView;
+}
+
+- (UIView *)lineView {
+    if (_lineView == NULL) {
+        _lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, 10)];
+        _lineView.backgroundColor = [UIColor orangeColor];
+        _lineView.layer.cornerRadius = 0;
+    }
+    return _lineView;
 }
 
 - (UILabel *)maxView {

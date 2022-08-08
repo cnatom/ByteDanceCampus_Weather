@@ -31,9 +31,9 @@
 		14B2C5D0289112BF005BFC7C /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B2C5CF289112BF005BFC7C /* Weather.m */; };
 		14B2C5D328911446005BFC7C /* DaylyWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B2C5D228911446005BFC7C /* DaylyWeather.m */; };
 		2DD9519D8918C29C4FFB06BD /* FlexContainerExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD9587E0E16A6F439835837 /* FlexContainerExample.m */; };
-		2DD95486D535AEE5B532A87F /* FlexItemHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD950BB0B890C50C923B66E /* FlexItemHeaderView.m */; };
-		2DD956CAE95AF84B588CBEF1 /* FlexItemChildView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD95658E97A77D1EC71833D /* FlexItemChildView.m */; };
-		2DD95E4793E718C5EF375C4D /* FlexItemContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD957E437F14FC2685B90A8 /* FlexItemContainer.m */; };
+		2DD95486D535AEE5B532A87F /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD950BB0B890C50C923B66E /* HeaderView.m */; };
+		2DD956CAE95AF84B588CBEF1 /* ChildView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD95658E97A77D1EC71833D /* ChildView.m */; };
+		2DD95E4793E718C5EF375C4D /* FlexContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD957E437F14FC2685B90A8 /* FlexContainer.m */; };
 		B50BAD4C289F9A0D009208C2 /* AnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = B50BAD4B289F9A0D009208C2 /* AnimationView.m */; };
 		B51A767A289CF5F4004C9E5F /* CurrentWeatherView.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A7679289CF5F4004C9E5F /* CurrentWeatherView.m */; };
 		B51A7681289E156E004C9E5F /* futureTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A7680289E156E004C9E5F /* futureTableView.m */; };
@@ -95,13 +95,13 @@
 		14B2C5D228911446005BFC7C /* DaylyWeather.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DaylyWeather.m; sourceTree = "<group>"; };
 		14B2C5D428911608005BFC7C /* WeatherHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherHeader.h; sourceTree = "<group>"; };
 		2DD9507CA9D90466FC65758A /* FlexContainerExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexContainerExample.h; sourceTree = "<group>"; };
-		2DD950BB0B890C50C923B66E /* FlexItemHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexItemHeaderView.m; sourceTree = "<group>"; };
-		2DD951714E5A943152459740 /* FlexItemHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexItemHeaderView.h; sourceTree = "<group>"; };
-		2DD95658E97A77D1EC71833D /* FlexItemChildView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexItemChildView.m; sourceTree = "<group>"; };
-		2DD957E437F14FC2685B90A8 /* FlexItemContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexItemContainer.m; sourceTree = "<group>"; };
+		2DD950BB0B890C50C923B66E /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
+		2DD951714E5A943152459740 /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
+		2DD95658E97A77D1EC71833D /* ChildView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildView.m; sourceTree = "<group>"; };
+		2DD957E437F14FC2685B90A8 /* FlexContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexContainer.m; sourceTree = "<group>"; };
 		2DD9587E0E16A6F439835837 /* FlexContainerExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexContainerExample.m; sourceTree = "<group>"; };
-		2DD95A909F64ACA281C7BA07 /* FlexItemChildView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexItemChildView.h; sourceTree = "<group>"; };
-		2DD95C91320167CA35D7BBC7 /* FlexItemContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexItemContainer.h; sourceTree = "<group>"; };
+		2DD95A909F64ACA281C7BA07 /* ChildView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildView.h; sourceTree = "<group>"; };
+		2DD95C91320167CA35D7BBC7 /* FlexContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexContainer.h; sourceTree = "<group>"; };
 		4F4DFFE3505B4E39B298FE71 /* Pods-ByteDanceCampus_Weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ByteDanceCampus_Weather.debug.xcconfig"; path = "Target Support Files/Pods-ByteDanceCampus_Weather/Pods-ByteDanceCampus_Weather.debug.xcconfig"; sourceTree = "<group>"; };
 		9B10660F2F04B3B436AE955F /* Pods_ByteDanceCampus_Weather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ByteDanceCampus_Weather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B50BAD4A289F9A0D009208C2 /* AnimationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnimationView.h; sourceTree = "<group>"; };
@@ -239,15 +239,27 @@
 			path = RisingJWT;
 			sourceTree = "<group>";
 		};
-		2DD950E00A4AC8F6BDED2533 /* Card */ = {
+		2DD950E00A4AC8F6BDED2533 /* FlexContainer */ = {
 			isa = PBXGroup;
 			children = (
-				2DD95A909F64ACA281C7BA07 /* FlexItemChildView.h */,
-				2DD95658E97A77D1EC71833D /* FlexItemChildView.m */,
-				2DD951714E5A943152459740 /* FlexItemHeaderView.h */,
-				2DD950BB0B890C50C923B66E /* FlexItemHeaderView.m */,
+				5C555D6628A1543100C8A68F /* Example */,
+				2DD957E437F14FC2685B90A8 /* FlexContainer.m */,
+				2DD95C91320167CA35D7BBC7 /* FlexContainer.h */,
+				2DD95A909F64ACA281C7BA07 /* ChildView.h */,
+				2DD95658E97A77D1EC71833D /* ChildView.m */,
+				2DD951714E5A943152459740 /* HeaderView.h */,
+				2DD950BB0B890C50C923B66E /* HeaderView.m */,
 			);
-			path = Card;
+			path = FlexContainer;
+			sourceTree = "<group>";
+		};
+		5C555D6628A1543100C8A68F /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				2DD9507CA9D90466FC65758A /* FlexContainerExample.h */,
+				2DD9587E0E16A6F439835837 /* FlexContainerExample.m */,
+			);
+			path = Example;
 			sourceTree = "<group>";
 		};
 		8AA4E2FF70A89252F4390E76 /* Frameworks */ = {
@@ -273,15 +285,11 @@
 			children = (
 				B50BAD4A289F9A0D009208C2 /* AnimationView.h */,
 				B50BAD4B289F9A0D009208C2 /* AnimationView.m */,
-				2DD950E00A4AC8F6BDED2533 /* Card */,
+				2DD950E00A4AC8F6BDED2533 /* FlexContainer */,
 				B51A7678289CF5F4004C9E5F /* CurrentWeatherView.h */,
 				B51A7679289CF5F4004C9E5F /* CurrentWeatherView.m */,
 				B51A767F289E156E004C9E5F /* futureTableView.h */,
 				B51A7680289E156E004C9E5F /* futureTableView.m */,
-				2DD9507CA9D90466FC65758A /* FlexContainerExample.h */,
-				2DD9587E0E16A6F439835837 /* FlexContainerExample.m */,
-				2DD957E437F14FC2685B90A8 /* FlexItemContainer.m */,
-				2DD95C91320167CA35D7BBC7 /* FlexItemContainer.h */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -571,10 +579,10 @@
 				14B2C5A6288EDAFE005BFC7C /* CityWeatherItem.m in Sources */,
 				B5338EC9289B7481009A72EA /* CitiesModel.m in Sources */,
 				14A902152892183100DC3C1A /* UIColor+Rising.m in Sources */,
-				2DD956CAE95AF84B588CBEF1 /* FlexItemChildView.m in Sources */,
-				2DD95486D535AEE5B532A87F /* FlexItemHeaderView.m in Sources */,
+				2DD956CAE95AF84B588CBEF1 /* ChildView.m in Sources */,
+				2DD95486D535AEE5B532A87F /* HeaderView.m in Sources */,
 				2DD9519D8918C29C4FFB06BD /* FlexContainerExample.m in Sources */,
-				2DD95E4793E718C5EF375C4D /* FlexItemContainer.m in Sources */,
+				2DD95E4793E718C5EF375C4D /* FlexContainer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

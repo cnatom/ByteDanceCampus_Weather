@@ -6,13 +6,13 @@
 //
 //
 
-#import "FlexItemChildView.h"
+#import "ChildView.h"
 
-@interface FlexItemChildView ()
+@interface ChildView ()
 @property(nonatomic, strong) UILabel *text;
 @end
 
-@implementation FlexItemChildView
+@implementation ChildView
 
 
 - (instancetype)init {
@@ -34,7 +34,7 @@
 
 - (UILabel *)text {
     if (_text == NULL) {
-        _text = [[UILabel alloc] init];
+        _text = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 200)];
         _text.text = @"Child";
     }
     return _text;

@@ -5,17 +5,16 @@
 //  Created by atom on 2022/8/8.
 //
 
-#import "FlexItemContainer.h"
-#import "FlexItemHeaderView.h"
-#import "FlexItemChildView.h"
+#import "FlexContainer.h"
+#import "HeaderView.h"
+#import "ChildView.h"
 
-@interface FlexItemContainer ()
+@interface FlexContainer ()
 @property(nonatomic, strong) UIStackView *colsView;
-@property(nonatomic, strong) UIView *headerView;
-@property(nonatomic, strong) UIView *childView;
+
 @end
 
-@implementation FlexItemContainer {
+@implementation FlexContainer {
     UIEdgeInsets paddingContainer;
 }
 #pragma mark - Init
@@ -68,7 +67,7 @@
 
 - (UIView *)headerView {
     if (_headerView == NULL) {
-        _headerView = [[FlexItemHeaderView alloc] init];
+        _headerView = [[HeaderView alloc] init];
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(show:)];
         _headerView.userInteractionEnabled = YES;
         [_headerView addGestureRecognizer:tap];
@@ -87,7 +86,7 @@
 
 - (UIView *)childView {
     if (_childView == NULL) {
-        _childView = [[FlexItemChildView alloc] init];
+        _childView = [[ChildView alloc] init];
         _childView.hidden = true;
     }
     return _childView;

@@ -7,11 +7,11 @@
 //
 
 #import "FlexContainerExample.h"
-#import "FlexItemContainer.h"
+#import "FlexContainer.h"
 
 @interface FlexContainerExample ()
 @property(nonatomic, strong) UIImageView *backgroundView;
-@property (nonatomic, strong) UIView *container;
+@property(nonatomic, strong) UIView *container;
 @property(nonatomic, strong) UIStackView *cols;
 
 @end
@@ -22,24 +22,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self addView];
+    [self setPosition];
+}
+-(void)addView{
     [self.view addSubview:self.backgroundView];
     [self.view addSubview:self.container];
+    [self.container addSubview:self.cols];
+    [self.cols addArrangedSubview:FlexContainer.new];
+    [self.cols addArrangedSubview:FlexContainer.new];
+    [self.cols addArrangedSubview:FlexContainer.new];
+
+}
+-(void)setPosition{
     [self.container mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).offset(100);
         make.left.equalTo(self.view).offset(12);
         make.right.equalTo(self.view).offset(-12);
     }];
-    [self.container addSubview:self.cols];
-    [self.cols addArrangedSubview:FlexItemContainer.new];
-    [self.cols addArrangedSubview:FlexItemContainer.new];
-    [self.cols addArrangedSubview:FlexItemContainer.new];
     [self.cols mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.container).offset(10);
-        make.left.equalTo(self.container).offset(11);
-        make.right.equalTo(self.container).offset(-11);
+        make.left.equalTo(self.container).offset(12);
+        make.right.equalTo(self.container).offset(-12);
         make.bottom.equalTo(self.container).offset(-10);
     }];
 }
+
 
 - (void)initConfig {
     marginContainer = UIEdgeInsetsMake(0, 16, 0, 16);
@@ -48,15 +56,16 @@
 #pragma mark - Getter
 
 
-- (UIStackView *)cols{
-    if (_cols==NULL) {
+- (UIStackView *)cols {
+    if (_cols == NULL) {
         _cols = UIStackView.new;
         _cols.axis = UILayoutConstraintAxisVertical;
         _cols.spacing = 5;
     }
     return _cols;
 }
--(UIView *)container{
+
+- (UIView *)container {
     if (_container == NULL) {
         _container = [[UIView alloc] init];
         _container.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.1];
@@ -64,6 +73,7 @@
     }
     return _container;
 }
+
 - (UIImageView *)backgroundView {
     if (_backgroundView == NULL) {
         _backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SunnyBG"]];
