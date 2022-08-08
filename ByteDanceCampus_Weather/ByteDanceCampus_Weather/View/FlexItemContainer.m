@@ -16,9 +16,7 @@
 @end
 
 @implementation FlexItemContainer {
-    UIEdgeInsets marginContainer;
-    UIEdgeInsets marginHeader;
-    CGFloat cornerRadius;
+    UIEdgeInsets paddingContainer;
 }
 #pragma mark - Init
 
@@ -28,15 +26,13 @@
     if (self) {
         [self initConfig];
         self.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0];
-        self.layer.cornerRadius = cornerRadius;
+        self.layer.cornerRadius = 16;
     }
     return self;
 }
 
 - (void)initConfig {
-    marginContainer = UIEdgeInsetsMake(0, 16, 0, 16);
-    marginHeader = UIEdgeInsetsMake(10, 16, 10, 16);
-    cornerRadius = 16;
+    paddingContainer = UIEdgeInsetsMake(16, 13, 16, 13);
 }
 
 
@@ -57,18 +53,14 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    [self mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.superview).offset(marginContainer.left);
-        make.right.equalTo(self.superview).offset(-marginContainer.right);
-    }];
     [self addSubview:self.colsView];
     [self.colsView addArrangedSubview:self.headerView];
     [self.colsView addArrangedSubview:self.childView];
     [self.colsView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self).offset(marginHeader.top);
-        make.bottom.equalTo(self).offset(-marginHeader.bottom);
-        make.left.equalTo(self).offset(marginHeader.left);
-        make.right.equalTo(self).offset(-marginHeader.right);
+        make.top.equalTo(self).offset(paddingContainer.top);
+        make.bottom.equalTo(self).offset(-paddingContainer.bottom);
+        make.left.equalTo(self).offset(paddingContainer.left);
+        make.right.equalTo(self).offset(-paddingContainer.right);
     }];
 }
 

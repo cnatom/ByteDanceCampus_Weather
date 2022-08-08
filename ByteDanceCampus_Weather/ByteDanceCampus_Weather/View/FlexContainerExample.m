@@ -1,20 +1,22 @@
 //
-//  TestFlexContainerController.m
+//  FlexContainerExample.m
 //  ByteDanceCampus_Weather
 //
 //  Created by atom on 2022/8/8.
 //
 //
-#import "TestFlexContainerController.h"
+
+#import "FlexContainerExample.h"
 #import "FlexItemContainer.h"
 
-@interface TestFlexContainerController ()
+@interface FlexContainerExample ()
 @property(nonatomic, strong) UIImageView *backgroundView;
-@property(nonatomic, strong) UIStackView *container;
+@property (nonatomic, strong) UIView *container;
+@property(nonatomic, strong) UIStackView *cols;
 
 @end
 
-@implementation TestFlexContainerController {
+@implementation FlexContainerExample {
     UIEdgeInsets marginContainer;
 }
 
@@ -22,15 +24,20 @@
     [super viewDidLoad];
     [self.view addSubview:self.backgroundView];
     [self.view addSubview:self.container];
-    [self.container addArrangedSubview:UIView.new];
-    [self.container addArrangedSubview:FlexItemContainer.new];
-    [self.container addArrangedSubview:FlexItemContainer.new];
-    [self.container addArrangedSubview:FlexItemContainer.new];
     [self.container mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).offset(100);
-        make.left.equalTo(self.view);
-        make.right.equalTo(self.view);
-
+        make.left.equalTo(self.view).offset(12);
+        make.right.equalTo(self.view).offset(-12);
+    }];
+    [self.container addSubview:self.cols];
+    [self.cols addArrangedSubview:FlexItemContainer.new];
+    [self.cols addArrangedSubview:FlexItemContainer.new];
+    [self.cols addArrangedSubview:FlexItemContainer.new];
+    [self.cols mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.container).offset(10);
+        make.left.equalTo(self.container).offset(11);
+        make.right.equalTo(self.container).offset(-11);
+        make.bottom.equalTo(self.container).offset(-10);
     }];
 }
 
@@ -41,16 +48,22 @@
 #pragma mark - Getter
 
 
-- (UIStackView *)container{
-    if (_container==NULL) {
-        _container = UIStackView.new;
-        _container.axis = UILayoutConstraintAxisVertical;
+- (UIStackView *)cols{
+    if (_cols==NULL) {
+        _cols = UIStackView.new;
+        _cols.axis = UILayoutConstraintAxisVertical;
+        _cols.spacing = 5;
+    }
+    return _cols;
+}
+-(UIView *)container{
+    if (_container == NULL) {
+        _container = [[UIView alloc] init];
+        _container.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.1];
+        _container.layer.cornerRadius = 16;
     }
     return _container;
 }
-
-
-
 - (UIImageView *)backgroundView {
     if (_backgroundView == NULL) {
         _backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SunnyBG"]];
@@ -62,7 +75,7 @@
 #pragma mark - Router
 
 + (NSArray<NSString *> *)routerPath {
-    return @[@"TestFlexContainerController"];
+    return @[@"FlexContainerExample"];
 }
 
 + (void)responseRequest:(RisingRouterRequest *)request completion:(RisingRouterResponseBlock)completion {
@@ -75,7 +88,7 @@
             UINavigationController *nav = (request.requestController ? request.requestController : RisingRouterRequest.useTopController).navigationController;
 
             if (nav) {
-                TestFlexContainerController *vc = [[self alloc] init];
+                FlexContainerExample *vc = [[self alloc] init];
                 response.responseController = vc;
 
                 [nav pushViewController:vc animated:YES];
@@ -94,7 +107,7 @@
 
         case RouterRequestController: {
 
-            TestFlexContainerController *vc = [[self alloc] init];
+            FlexContainerExample *vc = [[self alloc] init];
 
             response.responseController = vc;
         }

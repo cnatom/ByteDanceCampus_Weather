@@ -15,7 +15,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    UIViewController *vc = [self.router controllerForRouterPath:@"TestFlexContainerController"];
+    UIViewController *vc = [self.router controllerForRouterPath:@"FlexContainerExample"];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
     self.window = [[UIWindow alloc] init];
     self.window.rootViewController = nav;
