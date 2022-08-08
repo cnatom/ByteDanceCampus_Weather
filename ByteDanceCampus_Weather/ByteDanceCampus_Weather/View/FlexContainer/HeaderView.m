@@ -9,9 +9,9 @@
 #import "HeaderView.h"
 
 @interface HeaderView ()
-@property(nonatomic, strong) UIStackView *rows;
-
-@property(nonatomic, strong) UIView *lineView;
+@property(nonatomic, strong) UIView *lineBottom;
+@property(nonatomic, strong) UIView *lineTop;
+@property (nonatomic, strong)UIView * lineContainer;
 @end
 
 @implementation HeaderView
@@ -28,36 +28,57 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    [self addSubview:self.rows];
-    [self.rows addArrangedSubview:self.weekView];
-    [self.rows addArrangedSubview:self.iconView];
-    [self.rows addArrangedSubview:self.minView];
-    [self.rows addArrangedSubview:self.lineView];
-    [self.rows addArrangedSubview:self.maxView];
-    [self.rows mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self);
-    }];
+    [self addView];
+    [self setPosition];
 }
 
+-(void)addView{
+    [self addSubview:self.weekView];
+    [self addSubview:self.iconView];
+    [self addSubview:self.minView];
+    [self addSubview:self.lineContainer];
+    [self.lineContainer addSubview:self.lineBottom];
+    [self.lineBottom addSubview:self.lineTop];
+    [self addSubview:self.maxView];
+}
+-(void)setPosition{
+    NSMutableArray *rows = [[NSMutableArray alloc] init];
+    [rows addObject:self.weekView];
+    [rows addObject:self.iconView];
+    [rows addObject:self.minView];
+    [rows addObject:self.lineContainer];
+    [rows addObject:self.maxView];
+    [self.lineBottom mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.lineContainer);
+        [make centerY];
+        make.height.equalTo(@5);
+    }];
+    [self.lineTop mas_makeConstraints:^(MASConstraintMaker *make) {
 
+        make.left.equalTo(self.lineBottom.mas_left).offset(10);
+        make.right.equalTo(self.lineBottom.mas_right).offset(-10);
+        make.height.equalTo(@5);
+    }];
+    [rows mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:5 leadSpacing:0 tailSpacing:0];
+    [rows mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self);
+        make.height.equalTo(@21);
+        make.bottom.equalTo(self);
+    }];
+
+}
+#pragma mark - Getter
 - (UILabel *)weekView {
     if (_weekView == NULL) {
         _weekView = [[UILabel alloc] init];
         _weekView.text = @"今天";
+        _weekView.textAlignment = NSTextAlignmentCenter;
         _weekView.textColor = [UIColor whiteColor];
         _weekView.font = [UIFont boldSystemFontOfSize:21];
     }
     return _weekView;
 }
 
-- (UIStackView *)rows {
-    if (_rows == NULL) {
-        _rows = [[UIStackView alloc] init];
-        _rows.axis = UILayoutConstraintAxisHorizontal;
-        _rows.distribution = UIStackViewDistributionEqualSpacing;
-    }
-    return _rows;
-}
 
 - (UIImageView *)iconView {
     if (_iconView == NULL) {
@@ -73,18 +94,34 @@
         _minView = [[UILabel alloc] init];
         _minView.text = @"31°";
         _minView.font = [UIFont boldSystemFontOfSize:21];
+        _minView.textAlignment = NSTextAlignmentCenter;
         _minView.textColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
     }
     return _minView;
 }
 
-- (UIView *)lineView {
-    if (_lineView == NULL) {
-        _lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, 10)];
-        _lineView.backgroundColor = [UIColor orangeColor];
-        _lineView.layer.cornerRadius = 0;
+- (UIView *)lineBottom {
+    if (_lineBottom == NULL) {
+        _lineBottom = [[UIView alloc] init];
+        _lineBottom.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.2];
+        _lineBottom.layer.cornerRadius = 2.5;
     }
-    return _lineView;
+    return _lineBottom;
+}
+
+- (UIView *)lineTop {
+    if (_lineTop == NULL) {
+        _lineTop = [[UIView alloc] init];
+        _lineTop.backgroundColor = [[UIColor systemYellowColor] colorWithAlphaComponent:1.0];
+        _lineTop.layer.cornerRadius = 2.5;
+    }
+    return _lineTop;
+}
+- (UIView *)lineContainer {
+    if (_lineContainer == NULL) {
+        _lineContainer = [[UIView alloc] init];
+    }
+    return _lineContainer;
 }
 
 - (UILabel *)maxView {
@@ -92,6 +129,7 @@
         _maxView = [[UILabel alloc] init];
         _maxView.text = @"35°";
         _maxView.font = [UIFont boldSystemFontOfSize:21];
+        _maxView.textAlignment = NSTextAlignmentCenter;
         _maxView.textColor = [UIColor whiteColor];
     }
     return _maxView;
