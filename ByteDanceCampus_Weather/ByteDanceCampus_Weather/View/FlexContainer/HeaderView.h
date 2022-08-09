@@ -11,17 +11,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HeaderView : UIView
 
-/// 今天是周几 比如："今天""周一""周二"
-@property(nonatomic, strong) UILabel *weekView;
+/// 初始化
+/// @param week 第几周 比如：“今天”“周一”“周二”
+/// @param min 一天的最低温度
+/// @param max 一天的最高温度
+-(instancetype)initWithWeek:(NSString *)week minTem:(NSString *)min maxTem:(NSString *)max;
 
-/// 天气小图标
-@property(nonatomic, strong) UIImageView *iconView;
-
-///最低温度
-@property(nonatomic, strong) UILabel *minView;
-
-///最高温度
-@property(nonatomic, strong) UILabel *maxView;
 
 @end
 

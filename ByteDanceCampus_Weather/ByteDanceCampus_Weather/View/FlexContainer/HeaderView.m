@@ -9,6 +9,19 @@
 #import "HeaderView.h"
 
 @interface HeaderView ()
+/// 今天是周几 比如："今天""周一""周二"
+@property(nonatomic, strong) UILabel *weekView;
+
+/// 天气小图标
+@property(nonatomic, strong) UIImageView *iconView;
+
+///最低温度
+@property(nonatomic, strong) UILabel *minView;
+
+///最高温度
+@property(nonatomic, strong) UILabel *maxView;
+
+///最低最高气温 横线
 @property(nonatomic, strong) UIView *lineBottom;
 @property(nonatomic, strong) UIView *lineTop;
 @property (nonatomic, strong)UIView * lineContainer;
@@ -16,13 +29,17 @@
 
 @implementation HeaderView
 
-- (instancetype)init {
+- (instancetype)initWithWeek:(NSString *)week minTem:(NSString *)min maxTem:(NSString *)max{
     self = [super init];
-    if (self) {
-//        self.backgroundColor = [UIColor greenColor];
-
+    if(self){
+        self.weekView.text = week;
+        self.minView.text = [NSString stringWithFormat:@"%@°",min];
+        self.maxView.text = [NSString stringWithFormat:@"%@°",max];
     }
-
+    return self;
+}
+- (instancetype)init {
+    self = [self initWithWeek:@"某天" minTem:@"00" maxTem:@"00"];
     return self;
 }
 
@@ -92,7 +109,7 @@
 - (UILabel *)minView {
     if (_minView == NULL) {
         _minView = [[UILabel alloc] init];
-        _minView.text = @"31°";
+        _minView.text = @"00°";
         _minView.font = [UIFont boldSystemFontOfSize:21];
         _minView.textAlignment = NSTextAlignmentCenter;
         _minView.textColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
@@ -127,7 +144,7 @@
 - (UILabel *)maxView {
     if (_maxView == NULL) {
         _maxView = [[UILabel alloc] init];
-        _maxView.text = @"35°";
+        _maxView.text = @"00°";
         _maxView.font = [UIFont boldSystemFontOfSize:21];
         _maxView.textAlignment = NSTextAlignmentCenter;
         _maxView.textColor = [UIColor whiteColor];
