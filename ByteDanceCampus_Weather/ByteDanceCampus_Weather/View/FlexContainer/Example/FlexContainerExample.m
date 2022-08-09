@@ -8,17 +8,21 @@
 
 #import "FlexContainerExample.h"
 #import "FlexContainer.h"
-#import "FlexView.h"
 
 @interface FlexContainerExample ()
 @property(nonatomic, strong) UIImageView *backgroundView;
-@property (nonatomic, strong)UIVisualEffectView *blurContainer;
-@property (nonatomic, strong) UIStackView *cols;
+@property(nonatomic, strong) UIVisualEffectView *blurContainer;
+
+@property(nonatomic, strong) UIStackView *cols;
 @end
 
 @implementation FlexContainerExample {
     UIEdgeInsets marginContainer;
     UIEdgeInsets paddingContainer;
+}
+- (void)initConfig {
+    marginContainer = UIEdgeInsetsMake(0, 12, 0, -12);
+    paddingContainer = UIEdgeInsetsMake(12, 12, -12, -12);
 }
 
 - (void)viewDidLoad {
@@ -28,11 +32,13 @@
     [self.backgroundView addSubview:self.blurContainer];
     [self.blurContainer.contentView addSubview:self.cols];
     [self.view addSubview:self.cols];
-    for(int i = 0;i<5;i++){
+    for (int i = 0; i < 5; i++) {
         FlexContainer *flexContainer = [[FlexContainer alloc] init];
         [self.cols addArrangedSubview:flexContainer];
     }
-
+    [self.backgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
     [self.blurContainer mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(@200);
         make.left.equalTo(self.view.mas_left).offset(marginContainer.left);
@@ -49,24 +55,22 @@
 }
 
 
-- (void)initConfig {
-    marginContainer = UIEdgeInsetsMake(0, 12, 0, -12);
-    paddingContainer = UIEdgeInsetsMake(12, 12, -12, -12);
-}
-
 #pragma mark - Getter
 
--(UIVisualEffectView *)blurContainer {
+- (UIVisualEffectView *)blurContainer {
     if (_blurContainer == NULL) {
-        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleRegular];
+        UIVibrancyEffect *vibrancyEffect = [UIVibrancyEffect effectForBlurEffect:blurEffect];
         _blurContainer = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
         _blurContainer.layer.cornerRadius = 16;
+        _blurContainer.translatesAutoresizingMaskIntoConstraints = false;
+        _blurContainer.alpha = 1;
         _blurContainer.layer.masksToBounds = YES;
-        _blurContainer.alpha = 0.98;
     }
     return _blurContainer;
 }
--(UIStackView *)cols {
+
+- (UIStackView *)cols {
     if (_cols == NULL) {
         _cols = [[UIStackView alloc] init];
         _cols.axis = UILayoutConstraintAxisVertical;
@@ -77,7 +81,8 @@
 
 - (UIImageView *)backgroundView {
     if (_backgroundView == NULL) {
-        _backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SnowBG"]];
+        _backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SunnyBG"]];
+        _backgroundView.contentMode = UIViewContentModeScaleAspectFill;
     }
 
     return _backgroundView;
