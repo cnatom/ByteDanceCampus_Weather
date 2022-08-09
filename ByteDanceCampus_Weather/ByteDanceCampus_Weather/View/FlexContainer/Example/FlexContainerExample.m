@@ -8,9 +8,10 @@
 
 #import "FlexContainerExample.h"
 #import "FlexContainer.h"
-
+#import "UIImage+MainColor.h"
 @interface FlexContainerExample ()
-@property(nonatomic, strong) UIImageView *backgroundView;
+@property (nonatomic, strong) UIImage *backgroundImage;
+@property(nonatomic, strong) UIImageView *backgroundImageView;
 @property(nonatomic, strong) UIVisualEffectView *blurContainer;
 
 @property(nonatomic, strong) UIStackView *cols;
@@ -28,15 +29,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initConfig];
-    [self.view addSubview:self.backgroundView];
-    [self.backgroundView addSubview:self.blurContainer];
-    [self.blurContainer.contentView addSubview:self.cols];
+    [self.view addSubview:self.backgroundImageView];
+    [self.backgroundImageView addSubview:self.blurContainer];
     [self.view addSubview:self.cols];
     for (int i = 0; i < 5; i++) {
         FlexContainer *flexContainer = [[FlexContainer alloc] init];
         [self.cols addArrangedSubview:flexContainer];
     }
-    [self.backgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.backgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
     [self.blurContainer mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -60,8 +60,10 @@
 - (UIVisualEffectView *)blurContainer {
     if (_blurContainer == NULL) {
         UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleRegular];
-        UIVibrancyEffect *vibrancyEffect = [UIVibrancyEffect effectForBlurEffect:blurEffect];
         _blurContainer = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+        _blurContainer.backgroundColor = [self.backgroundImage.mainColor
+                colorByChangeHue:0 saturation:-0.1 brightness:-0.1 alpha:-0.5];
+
         _blurContainer.layer.cornerRadius = 16;
         _blurContainer.translatesAutoresizingMaskIntoConstraints = false;
         _blurContainer.alpha = 1;
@@ -78,14 +80,23 @@
     }
     return _cols;
 }
+-(UIImage *)backgroundImage {
+    if (_backgroundImage == NULL) {
+//        _backgroundImage = [UIImage imageNamed:@"ClearBG"];
+        _backgroundImage = [UIImage imageNamed:@"SnowBG"];
+//        _backgroundImage = [UIImage imageNamed:@"SunnyBG"];
 
-- (UIImageView *)backgroundView {
-    if (_backgroundView == NULL) {
-        _backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SunnyBG"]];
-        _backgroundView.contentMode = UIViewContentModeScaleAspectFill;
+    }
+    return _backgroundImage;
+}
+- (UIImageView *)backgroundImageView {
+    if (_backgroundImageView == NULL) {
+
+        _backgroundImageView = [[UIImageView alloc] initWithImage:self.backgroundImage];
+        _backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
     }
 
-    return _backgroundView;
+    return _backgroundImageView;
 }
 
 #pragma mark - Router

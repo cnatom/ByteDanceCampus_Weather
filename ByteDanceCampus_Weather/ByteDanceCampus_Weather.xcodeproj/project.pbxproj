@@ -34,6 +34,7 @@
 		2DD95486D535AEE5B532A87F /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD950BB0B890C50C923B66E /* HeaderView.m */; };
 		2DD956CAE95AF84B588CBEF1 /* ChildView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD95658E97A77D1EC71833D /* ChildView.m */; };
 		2DD95E4793E718C5EF375C4D /* FlexContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD957E437F14FC2685B90A8 /* FlexContainer.m */; };
+		2DD95FAF465E452DB236DB25 /* UIImage+MainColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD95FA660D7A6A5C9BA7128 /* UIImage+MainColor.m */; };
 		B50BAD4C289F9A0D009208C2 /* AnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = B50BAD4B289F9A0D009208C2 /* AnimationView.m */; };
 		B51A767A289CF5F4004C9E5F /* CurrentWeatherView.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A7679289CF5F4004C9E5F /* CurrentWeatherView.m */; };
 		B51A7681289E156E004C9E5F /* futureTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A7680289E156E004C9E5F /* futureTableView.m */; };
@@ -97,11 +98,13 @@
 		2DD9507CA9D90466FC65758A /* FlexContainerExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexContainerExample.h; sourceTree = "<group>"; };
 		2DD950BB0B890C50C923B66E /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
 		2DD951714E5A943152459740 /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
+		2DD952ACF5D51556D9153BFC /* UIImage+MainColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MainColor.h"; sourceTree = "<group>"; };
 		2DD95658E97A77D1EC71833D /* ChildView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildView.m; sourceTree = "<group>"; };
 		2DD957E437F14FC2685B90A8 /* FlexContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexContainer.m; sourceTree = "<group>"; };
 		2DD9587E0E16A6F439835837 /* FlexContainerExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexContainerExample.m; sourceTree = "<group>"; };
 		2DD95A909F64ACA281C7BA07 /* ChildView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildView.h; sourceTree = "<group>"; };
 		2DD95C91320167CA35D7BBC7 /* FlexContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexContainer.h; sourceTree = "<group>"; };
+		2DD95FA660D7A6A5C9BA7128 /* UIImage+MainColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MainColor.m"; sourceTree = "<group>"; };
 		4F4DFFE3505B4E39B298FE71 /* Pods-ByteDanceCampus_Weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ByteDanceCampus_Weather.debug.xcconfig"; path = "Target Support Files/Pods-ByteDanceCampus_Weather/Pods-ByteDanceCampus_Weather.debug.xcconfig"; sourceTree = "<group>"; };
 		9B10660F2F04B3B436AE955F /* Pods_ByteDanceCampus_Weather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ByteDanceCampus_Weather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B50BAD4A289F9A0D009208C2 /* AnimationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnimationView.h; sourceTree = "<group>"; };
@@ -200,6 +203,7 @@
 				147671B7288D16F000A4FCAF /* RisingUIKitExtension.m */,
 				14A9021728921EA700DC3C1A /* UIView+Rising */,
 				14A9021628921E8700DC3C1A /* UIColor+Rising */,
+				2DD95796119D4A946FB031D9 /* UIImage+MainColor */,
 			);
 			path = "UIKit Extension";
 			sourceTree = "<group>";
@@ -251,6 +255,15 @@
 				2DD950BB0B890C50C923B66E /* HeaderView.m */,
 			);
 			path = FlexContainer;
+			sourceTree = "<group>";
+		};
+		2DD95796119D4A946FB031D9 /* UIImage+MainColor */ = {
+			isa = PBXGroup;
+			children = (
+				2DD95FA660D7A6A5C9BA7128 /* UIImage+MainColor.m */,
+				2DD952ACF5D51556D9153BFC /* UIImage+MainColor.h */,
+			);
+			path = "UIImage+MainColor";
 			sourceTree = "<group>";
 		};
 		5C555D6628A1543100C8A68F /* Example */ = {
@@ -583,6 +596,7 @@
 				2DD95486D535AEE5B532A87F /* HeaderView.m in Sources */,
 				2DD9519D8918C29C4FFB06BD /* FlexContainerExample.m in Sources */,
 				2DD95E4793E718C5EF375C4D /* FlexContainer.m in Sources */,
+				2DD95FAF465E452DB236DB25 /* UIImage+MainColor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
