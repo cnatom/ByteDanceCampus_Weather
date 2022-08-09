@@ -10,8 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FlexView : UIView
-
-- (void) add:(FlexContainer *)flexContainer;
+-(instancetype)initWithContents:(NSArray<FlexContainer *>*)array;
 
 @end
 

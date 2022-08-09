@@ -6,17 +6,19 @@
 //
 
 
+@class HeaderView;
+@class ChildView;
 NS_ASSUME_NONNULL_BEGIN
 
 /// 伸缩容器
 /// 
 @interface FlexContainer : UIButton
 
-/// 顶部一直显示的部分
-@property(nonatomic, strong) UIView *headerView;
+/// 伸缩容器初始化
+/// @param headerView 顶部常显部分
+/// @param childView 下方点击展开部分
+-(instancetype) initWithHeaderView:(HeaderView *)headerView childView:(ChildView *)childView;
 
-/// 点击后伸缩出来的部分
-@property(nonatomic, strong) UIView *childView;
 
 @end
 

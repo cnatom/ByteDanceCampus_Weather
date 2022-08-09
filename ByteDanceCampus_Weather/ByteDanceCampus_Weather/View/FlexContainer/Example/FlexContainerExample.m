@@ -8,75 +8,76 @@
 
 #import "FlexContainerExample.h"
 #import "FlexContainer.h"
+#import "FlexView.h"
 
 @interface FlexContainerExample ()
 @property(nonatomic, strong) UIImageView *backgroundView;
-@property(nonatomic, strong) UIView *container;
-@property(nonatomic, strong) UIStackView *cols;
-
+@property (nonatomic, strong)UIVisualEffectView *blurContainer;
+@property (nonatomic, strong) UIStackView *cols;
 @end
 
 @implementation FlexContainerExample {
     UIEdgeInsets marginContainer;
+    UIEdgeInsets paddingContainer;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self addView];
-    [self setPosition];
-}
--(void)addView{
+    [self initConfig];
     [self.view addSubview:self.backgroundView];
-    [self.view addSubview:self.container];
-    [self.container addSubview:self.cols];
-    [self.cols addArrangedSubview:FlexContainer.new];
-    [self.cols addArrangedSubview:FlexContainer.new];
-    [self.cols addArrangedSubview:FlexContainer.new];
+    [self.backgroundView addSubview:self.blurContainer];
+    [self.blurContainer.contentView addSubview:self.cols];
+    [self.view addSubview:self.cols];
+    for(int i = 0;i<5;i++){
+        FlexContainer *flexContainer = [[FlexContainer alloc] init];
+        [self.cols addArrangedSubview:flexContainer];
+    }
 
-}
--(void)setPosition{
-    [self.container mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view).offset(100);
-        make.left.equalTo(self.view).offset(12);
-        make.right.equalTo(self.view).offset(-12);
+    [self.blurContainer mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(@200);
+        make.left.equalTo(self.view.mas_left).offset(marginContainer.left);
+        make.right.equalTo(self.view.mas_right).offset(marginContainer.right);
     }];
+
     [self.cols mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.container).offset(10);
-        make.left.equalTo(self.container).offset(12);
-        make.right.equalTo(self.container).offset(-12);
-        make.bottom.equalTo(self.container).offset(-10);
+        make.top.equalTo(self.blurContainer.mas_top).offset(paddingContainer.top);
+        make.left.equalTo(self.blurContainer.mas_left).offset(paddingContainer.left);
+        make.right.equalTo(self.blurContainer.mas_right).offset(paddingContainer.right);
+        make.bottom.equalTo(self.blurContainer.mas_bottom).offset(paddingContainer.bottom);
     }];
+
 }
 
 
 - (void)initConfig {
-    marginContainer = UIEdgeInsetsMake(0, 16, 0, 16);
+    marginContainer = UIEdgeInsetsMake(0, 12, 0, -12);
+    paddingContainer = UIEdgeInsetsMake(12, 12, -12, -12);
 }
 
 #pragma mark - Getter
 
-
-- (UIStackView *)cols {
+-(UIVisualEffectView *)blurContainer {
+    if (_blurContainer == NULL) {
+        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+        _blurContainer = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+        _blurContainer.layer.cornerRadius = 16;
+        _blurContainer.layer.masksToBounds = YES;
+        _blurContainer.alpha = 0.98;
+    }
+    return _blurContainer;
+}
+-(UIStackView *)cols {
     if (_cols == NULL) {
-        _cols = UIStackView.new;
+        _cols = [[UIStackView alloc] init];
         _cols.axis = UILayoutConstraintAxisVertical;
         _cols.spacing = 5;
     }
     return _cols;
 }
 
-- (UIView *)container {
-    if (_container == NULL) {
-        _container = [[UIView alloc] init];
-        _container.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.1];
-        _container.layer.cornerRadius = 16;
-    }
-    return _container;
-}
-
 - (UIImageView *)backgroundView {
     if (_backgroundView == NULL) {
-        _backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SunnyBG"]];
+        _backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SnowBG"]];
     }
 
     return _backgroundView;
